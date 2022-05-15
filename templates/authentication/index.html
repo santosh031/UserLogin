@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="theme.css">
+    <title>Authentication</title>
+
+
+    <style>
+        button {
+            background-color: #03cae4;
+            color: #fff;
+            border: none;
+            display: block;
+            width: 100%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-family: inherit;
+            padding: 1.3rem;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+
+        .active {
+            background-color: #04AA6D;
+        }
+
+        .quiz-container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px 2px rgba(100, 100, 100, 0.1);
+            width: 600px;
+            overflow: hidden;
+        }
+
+        .ul {
+                list-style-type: none;
+                padding: 0;
+        }
+    </style>
+
+
+</head>
+
+<body>{% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong>{{ message }}
+    </div>{% endfor %}
+
+
+    <div>
+        <ul>
+            <li style="float:right"><a href="/signin">Sign In</a></li>
+            <li style="float:right"><a href="/signup">Sign Up</a></li>
+            <li style="float:right"><a href="/">Home</a></li>
+            <li><a class="active" href="#">Admin</a></li>
+        </ul>
+    </div>
+
+    <div class="quiz-container" id="quiz" style="margin: auto;
+    width: 20%;
+    background-origin: padding-box;
+    background-color: skyblue;
+    position:absolute;
+    top: 40%;
+    left: 40%;">
+        <h3 style="text-align: center;" ;";>welcome to Tenent </h3>{% if user.is_authenticated %}
+
+        <h2>hello {{ fname }}</h2>
+
+        <h3>Your successfully logged in.</h3>
+        <button type="submit"><a href="/signout">SignOut</a></button>{% else %}
+
+        <div class="ul">
+            <button type="submit"><a href="/signup">SignUp</a></button>
+            <button type="submit"><a href="/signin">SignIn</a></button>{% endif %}
+        </div>
+    </div>
+
+
+</body>
+
+</html>

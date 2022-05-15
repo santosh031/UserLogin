@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+         button {
+            background-color: #03cae4;
+            color: #fff;
+            border: none;
+            display: block;
+            width: 100%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-family: inherit;
+            padding: 1.3rem;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+
+        .active {
+            background-color: #04AA6D;
+        }
+
+        .quiz-container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px 2px rgba(100, 100, 100, 0.1);
+            width: 600px;
+            overflow: hidden;
+        }
+
+    </style>
+
+
+    <title>SignUp</title>
+</head>
+
+<body>{% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong>{{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>{% endfor %}
+
+
+    <div>
+        <ul>
+            <li style="float:right"><a href="/signin">Sign In</a></li>
+            <li style="float:right"><a href="/signup">Sign Up</a></li>
+            <li style="float:right"><a href="/">Home</a></li>
+            <li><a class="active" href="#">Admin</a></li>
+        </ul>
+    </div>
+
+
+
+
+
+
+    <div  class="quiz-container" style="
+     margin: auto;
+     width: 20%;
+     border: 2px green;
+     padding: 10px;
+     background-color: skyblue;
+     position: absolute;
+     top: 40%;
+     left: 40%;
+   ">
+        <h3 style="text-align: center;">Sign Up </h3>
+
+        <form action="/signup" method="post">{% csrf_token %}
+            <label for="">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter UserName" Required>
+            <br>
+
+            <label for="">First Name</label>
+            <input type="text" id="fname" name="fname" placeholder="Enter Your First Name" Required>
+            <br>
+
+            <label for="">Last Name</label>
+            <input type="text" id="lname" name="lname" placeholder="Enter Your LastName" Required>
+            <br>
+
+            <label for="">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter Your Email" Required>
+            <br>
+
+            <label for="">Password</label>
+            <input type="password" id="pass1" name="pass1" placeholder="Enter Password" Required>
+            <br>
+
+            <label for="">confirm your password</label>
+            <input type="password" id="pass2" name="pass2" placeholder="Confirm Password" Required>
+            <br>
+
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
